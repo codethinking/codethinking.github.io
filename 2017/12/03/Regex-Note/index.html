@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Regex," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="Peter&apos;s tech note">
+<meta name="description" content="Regex Note 1. .NET GrammerThe centerpiece of text processing with regular expression is the regular expression engine: System.Text.RegularExpressions.Regex.Two ">
+<meta name="keywords" content="Regex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regex Note">
 <meta property="og:url" content="http://codethinking.github.io/2017/12/03/Regex-Note/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Peter&apos;s tech note">
-<meta property="og:updated_time" content="2017-12-02T21:29:58.511Z">
+<meta property="og:description" content="Regex Note 1. .NET GrammerThe centerpiece of text processing with regular expression is the regular expression engine: System.Text.RegularExpressions.Regex.Two items of information are minimum require">
+<meta property="og:updated_time" content="2017-12-03T05:18:38.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regex Note">
-<meta name="twitter:description" content="Peter&apos;s tech note">
+<meta name="twitter:description" content="Regex Note 1. .NET GrammerThe centerpiece of text processing with regular expression is the regular expression engine: System.Text.RegularExpressions.Regex.Two items of information are minimum require">
 
 
 
@@ -184,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +259,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-03T14:29:58+13:00">
                 2017-12-03
@@ -270,6 +271,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NET-Basic/" itemprop="url" rel="index">
+                    <span itemprop="name">.NET Basic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -298,7 +321,20 @@
       
 
       
-        
+        <h1 id="Regex-Note"><a href="#Regex-Note" class="headerlink" title="Regex Note"></a>Regex Note</h1><hr>
+<h3 id="1-NET-Grammer"><a href="#1-NET-Grammer" class="headerlink" title="1. .NET Grammer"></a>1. .NET Grammer</h3><p>The centerpiece of text processing with regular expression is the regular expression engine: <strong>System.Text.RegularExpressions.Regex</strong>.<br>Two items of information are minimum required:</p>
+<ul>
+<li>Pattern</li>
+<li>Text</li>
+</ul>
+<p><strong>Three Operations to perform</strong></p>
+<ul>
+<li>Regex.IsMatch</li>
+<li>Regex.Matches</li>
+<li>Regex.Replace</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Text.RegularExpressions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Class1</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">      <span class="keyword">string</span> pattern = <span class="string">@"\b(\w+?)\s\1\b"</span>;</span><br><span class="line">      <span class="keyword">string</span> input = <span class="string">"This this is a nice day. What about this? This tastes good. I saw a a dog."</span>;</span><br><span class="line">      <span class="keyword">foreach</span> (Match match <span class="keyword">in</span> Regex.Matches(input, pattern, RegexOptions.IgnoreCase))</span><br><span class="line">         Console.WriteLine(<span class="string">"&#123;0&#125; (duplicates '&#123;1&#125;') at position &#123;2&#125;"</span>, </span><br><span class="line">                           match.Value, match.Groups[<span class="number">1</span>].Value, match.Index);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// The example displays the following output:</span></span><br><span class="line"><span class="comment">//       This this (duplicates 'This)' at position 0</span></span><br><span class="line"><span class="comment">//       a a (duplicates 'a)' at position 66</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -313,6 +349,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Regex/" rel="tag"># Regex</a>
+          
+        </div>
+      
 
       
       
@@ -322,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/03/HowToHexo/" rel="next" title="How TO Hexo">
-                <i class="fa fa-chevron-left"></i> How TO Hexo
+              <a href="/2017/12/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -332,7 +374,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/03/How to Hexo/" rel="prev" title="How TO Hexo">
+              <a href="/2017/12/03/HowToHexo/" rel="prev" title="How TO Hexo">
                 How TO Hexo <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -386,8 +428,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -402,14 +453,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
@@ -431,6 +500,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Regex-Note"><span class="nav-number">1.</span> <span class="nav-text">Regex Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NET-Grammer"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. .NET Grammer</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -455,7 +540,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
